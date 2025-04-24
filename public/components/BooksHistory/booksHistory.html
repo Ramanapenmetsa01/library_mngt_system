@@ -1,0 +1,46 @@
+<div class="books-history-container">
+  <div class="books-history-header-flex">
+    <div class="books-history-summary-card">
+      <div class="books-history-summary-icon">
+        <i data-lucide="book-open-check"></i>
+      </div>
+      <div class="books-history-summary-info">
+        <h3>Total Books History</h3>
+        <p id="totalBooksCount">Loading...</p>
+      </div>
+    </div>
+
+    <div class="books-history-search-container">
+      <select id="historySearchType" class="books-history-search-select">
+        <option value="book_title">Search by Book</option>
+        <option value="user_name">Search by User</option>
+        <option value="status">Search by Status</option>
+      </select>
+      <div class="books-history-search-input-container">
+        <input type="text" id="historySearchInput" class="books-history-search-input" placeholder="Search books history...">
+        <button class="books-history-search-button" id="historySearchButton">
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="books-history-table-container">
+    <table class="books-history-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Book Title</th>
+          <th>User Name</th>
+          <th>Borrow Date</th>
+          <th>Due Date</th>
+          <th>Return Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="booksHistoryTableBody">
+        <!-- Books history data will be loaded here -->
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="section-header-container">
+  <div class="section-title">
+    <h2>User Details</h2>
+  </div>
+  <div class="search-container">
+    <select id="searchType" class="search-select">
+      <option value="username">Search by Username</option>
+      <option value="email">Search by Email</option>
+    </select>
+    <div class="search-input-container">
+      <input type="text" id="searchInput" placeholder="Search users..." class="search-input">
+      <button class="search-button">
+        <i data-lucide="search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="users-table-container">
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="usersTableBody">
+      <!-- User data will be populated here -->
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,506 @@
+/* Books History Component Styles */
+.books-history-container {
+  padding: 1.5rem;
+  margin-top: 10px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white !important;
+}
+
+.books-history-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  border-radius: 16px;
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.books-history-summary-card {
+  display: flex;
+  align-items: center;
+  min-width: 240px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.books-history-summary-icon {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 12px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.books-history-summary-icon svg {
+  color: white;
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
+.books-history-summary-info h3 {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.2rem;
+  margin-top: 0;
+}
+
+.books-history-summary-info p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e40af;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin: 0;
+}
+
+/* Search controls styling */
+.books-history-search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display:none;
+}
+
+.books-history-search-container:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.books-history-search-select {
+  padding: 0.7rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  min-width: 160px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 44px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.8em;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  padding-right: 2.5rem;
+}
+
+.books-history-search-select option {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px;
+}
+
+.books-history-search-select:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.books-history-search-input-container {
+  position: relative;
+  flex: 1;
+}
+
+.books-history-search-input {
+  width: 100%;
+  padding: 0.7rem 2.75rem 0.7rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 44px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.books-history-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.books-history-search-input:hover,
+.books-history-search-input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.books-history-search-button {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.books-history-search-button:hover {
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Table styling */
+.books-history-table-container {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.books-history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.books-history-table th,
+.books-history-table td {
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.books-history-table th {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  position: relative;
+}
+
+.books-history-table tr {
+  transition: all 0.2s ease;
+}
+
+.books-history-table tr:hover td {
+  background-color: #f1f5f9;
+}
+
+/* Status badge styling */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-badge.returned {
+  background: linear-gradient(90deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 3px 6px rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.borrowed {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: white;
+  box-shadow: 0 3px 6px rgba(59, 130, 246, 0.3);
+}
+
+.status-badge.overdue {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  color: white;
+  box-shadow: 0 3px 6px rgba(239, 68, 68, 0.3);
+}
+
+/* Empty state and loading state styling */
+.empty-table-message {
+  padding: 3rem 1rem;
+}
+
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loading-icon {
+  animation: spin 1s linear infinite;
+  color: #3b82f6;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1.5rem;
+  color: #94a3b8;
+  opacity: 0.8;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.retry-btn {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.retry-btn:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+/* Animation for total count updates */
+#totalBooksCount {
+  transition: color 0.3s ease;
+}
+
+#totalBooksCount.updating {
+  color: #10b981;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Notification styling */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
+  max-width: 450px;
+  animation: slideIn 0.3s ease forwards;
+  border-left: 4px solid #3b82f6;
+}
+
+.notification.success {
+  border-left-color: #10b981;
+}
+
+.notification.error {
+  border-left-color: #ef4444;
+}
+
+.notification.warning {
+  border-left-color: #f59e0b;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification-content i {
+  color: #3b82f6;
+}
+
+.notification.success .notification-content i {
+  color: #10b981;
+}
+
+.notification.error .notification-content i {
+  color: #ef4444;
+}
+
+.notification.warning .notification-content i {
+  color: #f59e0b;
+}
+
+.notification-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.notification-close {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.notification-close:hover {
+  color: #334155;
+  transform: scale(1.1);
+}
+
+.notification.fade-out {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Add responsive styles for mobile devices */
+@media (max-width: 768px) {
+  .books-history-header-flex {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .books-history-summary-card {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .books-history-search-container {
+    width: 100%;
+    max-width: none;
+    flex-direction: column;
+  }
+  
+  .books-history-search-select {
+    width: 100%;
+  }
+  
+  .books-history-table th,
+  .books-history-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .status-badge {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+  
+  .notification {
+    min-width: auto;
+    max-width: 90%;
+  }
+}
+
+/* Add print styles for better printing */
+@media print {
+  .books-history-header-flex,
+  .books-history-search-container,
+  .retry-btn,
+  .notification-container {
+    display: none;
+  }
+  
+  .books-history-table-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .books-history-table th {
+    background: #f1f5f9;
+    color: #000;
+  }
+  
+  .status-badge {
+    background: none;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    color: #000;
+  }
+  
+  .status-badge.returned::before {
+    content: "✓ ";
+  }
+  
+  .status-badge.borrowed::before {
+    content: "⟳ ";
+  }
+  
+  .status-badge.overdue::before {
+    content: "! ";
+  }
+}

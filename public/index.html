@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Add Google Sign-In API -->
+    <!-- Add this before the closing </body> tag -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    <!-- Header (with Lucide icons as in Project 1) -->
+    <header class="header">
+      <nav class="nav container">
+        <div class="logo">
+          <i data-lucide="book-open" class="logo-icon"></i>
+          <span class="logo-text">LibraryMS</span>
+        </div>
+        <div class="nav-links">
+          <!-- Sign Up now opens the signup modal directly (student only)-->
+          <button class="nav-link" onclick="showSignupModalDirectly()">
+            <i data-lucide="user-plus"></i><span>Sign Up</span>
+          </button>
+          <!-- Login goes through a user type selection modal -->
+          <button class="nav-link" onclick="showLoginModal()">
+            <i data-lucide="log-in"></i><span>Login</span>
+          </button>
+          <button class="nav-link" onclick="openAboutModal()">
+            <i data-lucide="info"></i><span>About</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content (Project 1 Carousel) -->
+    <main class="main">
+      <section class="hero">
+        <div class="carousel">
+          <div class="carousel-container">
+            <div class="carousel-slide active">
+              <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2000&h=800" alt="Library 1" />
+            </div>
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=2000&h=800" alt="Library 2" />
+            </div>
+            <div class="carousel-slide">
+              <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=2000&h=800" alt="Library 3" />
+            </div>
+          </div>
+          <!-- Add the text container outside the carousel slides -->
+        <!-- Add the text container outside the carousel slides -->
+          <div class="animated-text-overlay">
+            <div class="blurred-box">
+              <div class="animated-text-container">
+                <span id="animatedTextContent"></span>
+              </div>
+              <div id="staticText" class="static-text"></div>
+            </div>
+          </div>
+
+          <div class="carousel-dots"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- About Modal (same as Project 1) -->
+    <div class="modal" id="aboutModal">
+      <div class="modal-overlay" onclick="closeAboutModal()"></div>
+      <div class="modal-content about-modal">
+        <button class="modal-close" onclick="closeAboutModal()">
+          <i data-lucide="x"></i>
+        </button>
+        <h2 class="modal-title"><i data-lucide="info"></i> About Our Library</h2>
+        <div class="about-grid">
+          <div class="about-card">
+            <i data-lucide="book-open" class="about-icon"></i>
+            <h3>Vast Collection</h3>
+            <p>Access to over 100,000 books, journals, and digital resources spanning every field of knowledge.</p>
+          </div>
+          <div class="about-card">
+            <i data-lucide="users" class="about-icon"></i>
+            <h3>Community Space</h3>
+            <p>A welcoming environment for students, researchers, and book lovers to learn and collaborate.</p>
+          </div>
+          <div class="about-card">
+            <i data-lucide="laptop" class="about-icon"></i>
+            <h3>Digital Access</h3>
+            <p>24/7 access to e-books, online databases, and digital learning resources from anywhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Type Selection Modal (for Login only) -->
+    <div id="userTypeModal" class="modal">
+      <div class="modal-overlay" onclick="closeModal('userTypeModal')"></div>
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('userTypeModal')">
+          <i data-lucide="x"></i>
+        </button>
+        <h2 class="login-h-text"><i data-lucide="user"></i> Select User Type</h2>
+        <div class="user-type-selection">
+          <button class="user-type-btn" onclick="selectUserType('student')">
+            <span class="user-type-icon">👤</span>
+            <h3>Student</h3>
+            <p>Borrow books and manage your reading</p>
+          </button>
+          <button class="user-type-btn" onclick="selectUserType('admin')">
+            <span class="user-type-icon">👨‍💼</span>
+            <h3>Admin</h3>
+            <p>Access admin portal</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+ <!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-overlay" onclick="closeModal('loginModal')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('loginModal')">
+      <i data-lucide="x"></i>
+    </button>
+    <h2 class="login-h-text lht"><i data-lucide="log-in"></i> Login to LibraryMS</h2>
+    
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+        <!-- Login Alert Message -->
+    <span class="login-alert"></span>
+    
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+    <!-- Student-only extras (shown if role is student) -->
+    <div id="studentExtras">
+      <div class="divider"><span>Or continue with</span></div>
+      <!-- Hide the Google Sign-In container that's causing the popup -->
+      <div id="googleSignInButton" class="google-signin-container" style="display: none;"></div>
+      <!-- Keep only the custom button and update its onclick function -->
+      <button type="button" class="google-btn" onclick="directGoogleLogin()">
+        <img src="https://www.google.com/favicon.ico" alt="Google" />
+        Sign in with Google
+      </button>
+    </div>
+    <p class="toggle-text">
+      Don't have an account?
+      <button type="button" class="toggle-btn" onclick="switchToSignup()">Sign up</button>
+    </p>
+  </div>
+</div>
+
+    <!-- Signup Modal (for Students only) -->
+    <div id="signupModal" class="modal">
+      <div class="modal-overlay" onclick="closeModal('signupModal')"></div>
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('signupModal')">
+          <i data-lucide="x"></i>
+        </button>
+        <h2 class="login-h-text lht"><i data-lucide="user-plus"></i> Create Account</h2>
+        <form id="signupForm" onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Full Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="Password" required minlength="8" />
+          </div>
+          <span class="signup-alert"></span>
+          <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+
+        
+        <p class="toggle-text">
+          Already have an account?
+          <button type="button" class="toggle-btn" onclick="switchToLogin()">Sign in</button>
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

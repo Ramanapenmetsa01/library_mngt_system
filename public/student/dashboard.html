@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Library Management System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="./css/student.css">
+    <!-- CSS files -->
+    <link rel="stylesheet" href="/student/css/overview-charts.css">
+    <link rel="stylesheet" href="/student/browsebooks/browsebooks.css">
+    <link rel="stylesheet" href="/student/mybooks/mybooks.css">
+    
+    <!-- Load Chart.js in the head to ensure it's available early -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="library-logo">
+                    <i class="fas fa-book-reader"></i>
+                    <span>Library Management System</span>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="greeting">Hi, <span id="user-name">Student</span>!</span>
+                <i class="fas fa-user-circle"></i>
+                <button id="logout" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <!-- Make sure the sidebar link for My Books has the correct data-target attribute -->
+        <!-- Add penalties link to the sidebar -->
+        <!-- Update the sidebar to replace penalties with history -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="#" data-target="overview" class="active"><i class="fas fa-home"></i> <span>Overview</span></a></li>
+                    <li><a href="#" data-target="myBooks"><i class="fas fa-book"></i> <span>My Books</span></a></li>
+                    <li><a href="#" data-target="browseBooks"><i class="fas fa-search"></i> <span>Browse Books</span></a></li>
+                    <li><a href="#" data-target="history"><i class="fas fa-history"></i> <span>History</span></a></li>
+                    <li><a href="#" data-target="profile"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- After the profile-section -->
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Content Area -->
+            <div class="content">
+                <!-- Overview Section -->
+                <section id="overview-section" class="section active">
+                    <div class="section-header">
+                        <h2>Dashboard Overview</h2>
+                    </div>
+                    
+                    <div class="overview-stats">
+                        <!-- Add this to your stats cards section if it doesn't exist -->
+                        <div class="stat-card">
+                            <div class="stat-icon available">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="stat-details">
+                                <h3>Available Books</h3>
+                                <p id="available-books">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>My Borrowed Books</h3>
+                                <p id="borrowed-books">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Due Soon</h3>
+                                <p id="due-soon">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="overview-content">
+                        <!-- Replace the overview-charts div with this updated version -->
+                        <div class="overview-charts">
+                            <div class="chart-header" >
+                                <h3>Reading Progress</h3>
+                            </div>
+                            <div class="chart-container full-width" id="reading-progress-chart-container">
+                                <canvas id="reading-progress-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- Add this available books section -->
+        
+                        
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div id="recent-activity-list" class="activity-list">
+                                <!-- Activity items will be added here dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Update the Browse Books Section to match the ID used in loadSection function -->
+                <section id="browseBooks-section" class="section" style="display:none;">
+                    <div id="browseBooksContent"></div>
+                </section>
+                
+                <!-- Add My Books Section if it doesn't exist -->
+                <section id="myBooks-section" class="section" style="display:none;">
+                    <div id="myBooksContent">
+                        <!-- Add this div to ensure the grid element exists -->
+                        <div id="myBooksGrid" class="books-grid"></div>
+                    </div>
+                </section>
+                
+                <!-- Add Profile Section if it doesn't exist -->
+                <section id="profile-section" class="section" style="display:none;">
+                    <div id="profileContent"></div>
+                </section>
+                <!-- Update the history section to remove duplicate header -->
+                <section id="history-section" class="section" style="display:none;">
+                    <div id="historyContent"></div>
+                </section>
+                <!-- Add other sections as needed -->
+            </div>
+        </div>
+    </div>
+    
+   <!-- IMPORTANT: Keep only one copy of each script -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="/student/js/overview-charts.js"></script>
+<script src="/student/js/student.js"></script>
+<script src="/student/browsebooks/browsebooks.js"></script>
+<script src="/student/mybooks/mybooks.js"></script>
+    
+    <!-- Debug and initialization script -->
+    <!-- Add this script at the end of your dashboard.html file, just before the closing body tag -->
+    <!-- Replace or update the script at the bottom of the file -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // Load overview data
+            loadOverviewData();
+            
+            // Check if chart canvas exists
+            const chartCanvas = document.getElementById('reading-progress-chart');
+            if (chartCanvas) {
+                console.log('Chart canvas found, checking dimensions');
+                
+                // Force the canvas to have proper dimensions
+                chartCanvas.style.display = 'block';
+                chartCanvas.style.width = '100%';
+                chartCanvas.style.height = '250px';
+                
+                // Initialize charts with a delay to ensure all resources are loaded
+                setTimeout(() => {
+                    if (typeof initializeOverviewCharts === 'function') {
+                        console.log('Initializing charts after delay');
+                        initializeOverviewCharts();
+                        
+                        // Add another check after initialization
+                        setTimeout(() => {
+                            const canvas = document.getElementById('reading-progress-chart');
+                            if (canvas) {
+                                console.log('Chart canvas display style:', window.getComputedStyle(canvas).display);
+                                console.log('Chart canvas dimensions:', {
+                                    width: canvas.width,
+                                    height: canvas.height,
+                                    offsetWidth: canvas.offsetWidth,
+                                    offsetHeight: canvas.offsetHeight
+                                });
+                            }
+                        }, 2000);
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

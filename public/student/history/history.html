@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My History - Library Management System</title>
+    <link rel="stylesheet" href="/student/history/history.css">
+    <!-- Include Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="history-container">
+        <div class="history-main-header">
+            <h2>My History</h2>
+        </div>
+        
+        <div class="history-tabs">
+            <button class="history-tab active" data-tab="borrowing" id="borrowingHistoryTab">Borrowing History</button>
+            <button class="history-tab" data-tab="payment" id="paymentHistoryTab">Payment History</button>
+        </div>
+        
+        <!-- Borrowing History Tab Content -->
+        <div class="history-tab-content active" id="borrowingHistory">
+            <div class="history-controls">
+                <div class="search-container">
+                    <input type="text" id="borrowing-search" class="search-input si" placeholder="Search by book title...">
+                    <button class="search-btn">
+                        <i data-lucide="search"></i>
+                    </button>
+                </div>
+                
+                <div class="history-filters">
+                    <select id="statusFilter" class="history-filter">
+                        <option value="all">All Status</option>
+                        <option value="returned">Returned</option>
+                        <option value="overdue">Overdue</option>
+                        <option value="active">Currently Borrowed</option>
+                    </select>
+                    <select id="timeFilter" class="history-filter">
+                        <option value="all">All Time</option>
+                        <option value="month">Last Month</option>
+                        <option value="3months">Last 3 Months</option>
+                        <option value="6months">Last 6 Months</option>
+                        <option value="year">Last Year</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="history-table-container">
+                <table class="history-table" id="borrowingHistoryTable">
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Borrow Date</th>
+                            <th>Expected Return</th>
+                            <th>Actual Return</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="borrowingHistoryTableBody">
+                        <!-- Table rows will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="borrowingHistoryEmpty" class="empty-state" style="display: none;">
+                <i data-lucide="book-x" class="empty-icon"></i>
+                <p>No borrowing history found</p>
+            </div>
+            
+            <div id="borrowingHistoryLoading" class="loading-spinner">
+                <i data-lucide="loader" class="spinner-icon"></i>
+                <p>Loading borrowing history...</p>
+            </div>
+        </div>
+        
+        <!-- Payment History Tab Content -->
+        <div class="history-tab-content" id="paymentHistory">
+            <div class="history-controls">
+                <div class="search-container">
+                    <input type="text" id="payment-search" class="search-input si" placeholder="Search by Book-title..." >
+                    <button class="search-btn">
+                        <i data-lucide="search"></i>
+                    </button>
+                </div>
+                
+                <div class="history-filters">
+                    <select id="paymentStatusFilter" class="history-filter">
+                        <option value="all">All Status</option>
+                        <option value="paid">Paid</option>
+                        <option value="unpaid">Unpaid</option>
+                    </select>
+                    <select id="paymentTimeFilter" class="history-filter">
+                        <option value="all">All Time</option>
+                        <option value="month">Last Month</option>
+                        <option value="3months">Last 3 Months</option>
+                        <option value="6months">Last 6 Months</option>
+                        <option value="year">Last Year</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="history-table-container">
+                <table class="history-table" id="paymentHistoryTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentHistoryTableBody">
+                        <!-- Table rows will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="paymentHistoryEmpty" class="empty-state" style="display: none;">
+                <i data-lucide="credit-card" class="empty-icon"></i>
+                <p>No payment history found</p>
+            </div>
+            
+            <!-- Change this line from style="display: none;" to no style attribute -->
+            <div id="paymentHistoryLoading" class="loading-spinner">
+                <i data-lucide="loader" class="spinner-icon"></i>
+                <p>Loading payment history...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/student/history/history.js"></script>
+</body>
+</html>

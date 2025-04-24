@@ -1,0 +1,1019 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--gray-50);
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.login-h-text{
+  text-align: center;
+}
+.lht{
+  margin-top:-10px;
+  margin-bottom:10px;
+}
+/* Header (with Lucide Icons) */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+}
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.nav-link:hover {
+  color: var(--gray-200);
+}
+.nav-link i {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Main Content & Carousel */
+.main {
+  padding-top: 4rem;
+}
+.hero {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  overflow: hidden;
+  position: relative;
+}
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.carousel-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.carousel-slide.active {
+  opacity: 1;
+}
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Update carousel content styles */
+.carousel-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  z-index: 20; /* Ensure text stays above slides */
+}
+
+.carousel-content h2,
+.carousel-content p {
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important; /* Keep text visible */
+}
+
+/* Animation styles for carousel text */
+.carousel-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid white;
+  animation: typing 3.5s steps(40, end) infinite,
+             blink-caret 0.75s step-end infinite;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-subtitle {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards 3.5s;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes typing {
+  0% { width: 0 }
+  50% { width: 100% }
+  100% { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.carousel-content h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.carousel-content p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.carousel-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+}
+.carousel-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+.carousel-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal.open {
+  display: flex;
+}
+.modal-overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  animation: modalSlideIn 0.3s ease-out;
+}
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.modal-close:hover {
+  color: var(--gray-600);
+}
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--gray-900);
+}
+/* About Modal (Project 1 Style) */
+/* For the About Modal specifically */
+.about-modal {
+  max-width: 80vw; /* wider modal */
+  padding: 2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.about-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-icon {
+  color: #3b82f6;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 0.5rem;
+}
+
+/* Auth Form (Project 1 Base) */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.name-group {
+  display: none;
+}
+.role-group {
+  display: none;
+}
+.input-group {
+  position: relative;
+}
+.input-group i {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+}
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.submit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+.signup-alert {
+  display: block;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.signup-alert.success {
+  color: green;
+}
+.signup-alert.error {
+  color: red;
+}
+.login-alert {
+  display: block;
+  
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  min-height: 0; /* Change from 1.2em to 0 */
+  height: auto; /* Add this line */
+  visibility: visible; /* Add this line */
+  transition: all 0.3s ease; /* Add smooth transition */
+}
+.login-alert:empty {
+  margin-bottom: 0;
+  visibility: hidden;
+  height: 0;
+}
+.login-alert.info {
+  color: rgb(15, 105, 15);
+}
+.login-alert.success {
+  color: green;
+}
+.login-alert.error {
+  color: red;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 4rem);
+  height: 1px;
+  background: var(--gray-300);
+}
+.divider::before {
+  left: 0;
+}
+.divider::after {
+  right: 0;
+}
+.divider span {
+  background: white;
+  padding: 0 0.5rem;
+  color: var(--gray-500);
+}
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.google-btn:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+}
+.google-btn img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.toggle-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+.toggle-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+}
+.toggle-btn:hover {
+  color: var(--primary-dark);
+}
+
+/* Responsive (Project 1) */
+@media (max-width: 640px) {
+  .nav-link span {
+    display: none;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+}
+
+/* ========================================
+   New Styles for Authentication Modals
+   (Merged from Project 2 with modifications)
+   ======================================== */
+
+/* Override Base Modal Styles for Auth Modals */
+#userTypeModal,
+#loginModal,
+#signupModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+}
+
+/* Modal Content for Auth Modals */
+#userTypeModal .modal-content,
+#loginModal .modal-content,
+#signupModal .modal-content {
+  position: relative;
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  margin: 5vh auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  animation: modalSlideUp 0.3s ease;
+}
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Close Button for Auth Modals */
+#userTypeModal .modal-close,
+#loginModal .modal-close,
+#signupModal .modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+#userTypeModal .modal-close:hover,
+#loginModal .modal-close:hover,
+#signupModal .modal-close:hover {
+  color: var(--gray-600);
+}
+
+/* User Type Selection Modal Specific */
+.user-type-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.user-type-btn {
+  background: white;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+.user-type-btn:hover {
+  transform: translateY(-5px);
+  border-color: #3498db;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+}
+.user-type-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.user-type-btn h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+.user-type-btn p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Form Styles for Auth Modals (Login/Signup) */
+#loginForm .form-group,
+#signupForm .form-group {
+  margin-bottom: 1.5rem;
+}
+#loginForm input[type="email"],
+#loginForm input[type="password"],
+#signupForm input[type="text"],
+#signupForm input[type="email"],
+#signupForm input[type="password"] {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+#loginForm input:focus,
+#signupForm input:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+#loginForm button,
+#signupForm button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  color: white;
+}
+#loginForm button:hover,
+#signupForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Student-only Extras in Login Modal */
+#studentExtras {
+  margin-top: 1rem;
+}
+
+/* Add these styles for text animation */
+.animated-login-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end),
+             blink-caret 0.75s step-end infinite;
+  border-right: 2px solid var(--primary);
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary) }
+}
+.blurred-box {
+  background: rgba(11, 2, 2, 0.1); /* Translucent background */
+  backdrop-filter: blur(2px);          /* Blurring effect */
+  border-radius: 8px;                    /* Rounded corners */
+  padding: 20px;                         /* Spacing inside the box */
+  display: inline-block;                 /* Adjusts size to content */
+}
+.animated-text-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  width: 100%;
+  text-align: center;
+}
+/* Add after your carousel-content styles */
+
+.animated-text-container {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  white-space: nowrap;
+}
+.static-text {
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.static-text.visible {
+  opacity: 1;
+}
+#animatedTextContent {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.animated-text-container::after {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  vertical-align: middle;
+  margin-left: 0;
+}
+@keyframes typing {
+  0% { width: 0 }
+  50% { width: 100% }
+  100% { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.carousel-content h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.carousel-content p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.carousel-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 10;
+}
+.carousel-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+.carousel-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal.open {
+  display: flex;
+}
+.modal-overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  animation: modalSlideIn 0.3s ease-out;
+}
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.modal-close:hover {
+  color: var(--gray-600);
+}
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--gray-900);
+}
+/* About Modal (Project 1 Style) */
+/* For the About Modal specifically */
+.about-modal {
+  max-width: 80vw; /* wider modal */
+  padding: 2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.about-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-icon {
+  color: #3b82f6;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 0.5rem;
+}
+
+/* Auth Form (Project 1 Base) */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.name-group {
+  display: none;
+}
+.role-group {
+  display: none;
+}
+.input-group {
+  position: relative;
+}
+.input-group i {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+}
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.submit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+.signup-alert {
+  display: block;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.signup-alert.success {
+  color: green;
+}
+.signup-alert.error {
+  color: red;
+}
+.login-alert {
+  display: block;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  min-height: 1.2em; /* to reserve space even when empty */
+}
+.login-alert.success {
+  color: green;
+}
+.login-alert.error {
+  color: red;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 4rem);
+  height: 1px;
+  background: var(--gray-300);
+}
+.divider::before {
+  left: 0;
+}
+.divider::after {
+  right: 0;
+}
+.divider span {
+  background: white;
+  padding: 0 0.5rem;
+  color: var(--gray-500);
+}
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: white;
+  border: 1px solid var(--gray-300);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.google-btn:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+}
+.google-btn img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.toggle-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+.toggle-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+}
+.toggle-btn:hover {
+  color: var(--primary-dark);
+}
+
+/* Responsive (Project 1) */
+@media (max-width: 640px) {
+  .nav-link span {
+    display: none;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+}

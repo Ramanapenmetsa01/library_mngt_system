@@ -1,0 +1,422 @@
+.section-header-container {
+  position: fixed;
+  top: 60px;
+  left: 220px;
+  right: 0;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 998;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.section-title h2 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Search container styling */
+.search-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.search-select {
+  padding: 0.6rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  min-width: 140px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.search-select option {
+  background-color: white;
+  color: #2563eb;
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+.search-select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.search-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Search input container */
+.search-input-container {
+  position: relative;
+  width: 400px;
+}
+
+.search-input {
+  padding: 0.6rem 1rem;
+  padding-right: 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  width: 100%;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.search-button {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.4rem;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:hover,
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.search-button:hover {
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Table container */
+/* Table container */
+.books-due-table-container {
+  margin-top: 30px;
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  width: calc(100% - 3rem);
+}
+
+/* Table styling */
+.books-due-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  table-layout: fixed !important;
+}
+
+.books-due-table th,
+.books-due-table td {
+  padding: 1.2rem 1.5rem;
+  text-align: center !important;
+}
+
+/* Column width distribution */
+.books-due-table th:nth-child(1),
+.books-due-table td:nth-child(1) { width: 5% !important; }  /* ID */
+.books-due-table th:nth-child(2),
+.books-due-table td:nth-child(2) { width: 12% !important; } /* USER NAME */
+.books-due-table th:nth-child(3),
+.books-due-table td:nth-child(3) { width: 18% !important; } /* BOOK TITLE */
+.books-due-table th:nth-child(4),
+.books-due-table td:nth-child(4) { width: 16% !important; } /* BORROWED DATE */
+.books-due-table th:nth-child(5),
+.books-due-table td:nth-child(5) { width: 12% !important; } /* DUE DATE */
+.books-due-table th:nth-child(6),
+.books-due-table td:nth-child(6) { width: 18% !important; } /* DAYS REMAINING */
+.books-due-table th:nth-child(7),
+.books-due-table td:nth-child(7) { width: 12% !important; } /* STATUS */
+.books-due-table th:nth-child(8),
+.books-due-table td:nth-child(8) { width: 15% !important; } /* ACTIONS */
+
+.books-due-table td:last-child {
+  min-width: 120px;
+  position: relative;
+  text-align: center;
+}
+
+/* Table header styling */
+.books-due-table th {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  font-weight: 600;
+  text-align: center !important;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  border-bottom: 2px solid #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.books-due-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.books-due-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+/* Table row styling */
+.books-due-table tr:hover td {
+  background: #f8fafc;
+}
+
+.books-due-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table cell styling */
+.books-due-table td {
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+  white-space: nowrap;
+  overflow:hidden!important;
+  text-overflow: ellipsis;
+  max-width: 100% !important;
+  position: relative;
+}
+
+/* Status badge styling - keep the same class names for these */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 100px;
+  max-width: 120px;
+  white-space: nowrap;
+  margin-right: 15px;
+  position: relative;
+  left: -10px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.status-badge.overdue {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+  border: 1px solid #b91c1c;
+  color: white !important;
+}
+
+.status-badge.due-soon {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+  border: 1px solid #b45309;
+  color: white !important;
+}
+
+.status-badge.on-time {
+  background: linear-gradient(90deg, #10b981, #059669);
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+  border: 1px solid #047857;
+  color: white !important;
+}
+
+/* Status icon styling */
+.status-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: -3px;
+  color: white !important;
+  stroke: white !important;
+}
+
+/* Action buttons styling - make more specific to BooksDue */
+.books-due-action-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.books-due-action-btn i {
+  font-size: 16px;
+}
+
+.books-due-action-btn.return {
+  background: #3b82f6;
+  color: white;
+}
+
+.books-due-action-btn.return:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.books-due-action-btn.extend {
+  background: #10b981;
+  color: white;
+}
+
+.books-due-action-btn.extend:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+/* Add these styles for the empty state */
+.empty-table-message {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #64748b;
+}
+
+.empty-icon {
+  width: 48px;
+  height: 48px;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Popup styling */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.confirmation-popup {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  overflow: hidden;
+  animation: popup-appear 0.3s ease-out;
+}
+
+@keyframes popup-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-content {
+  padding: 24px;
+}
+
+.popup-content h3 {
+  margin-top: 0;
+  color: #1e3a8a;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.popup-content p {
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.popup-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.popup-btn.cancel {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.popup-btn.cancel:hover {
+  background-color: #cbd5e1;
+}
+
+.popup-btn.confirm {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.popup-btn.confirm:hover {
+  background-color: #2563eb;
+}
+
+.popup-btn.ok {
+  background-color: #10b981;
+  color: white;
+}
+
+.popup-btn.ok:hover {
+  background-color: #059669;
+}

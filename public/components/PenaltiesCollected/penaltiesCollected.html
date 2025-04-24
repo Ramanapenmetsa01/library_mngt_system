@@ -1,0 +1,53 @@
+<div class="penalties-collected-container">
+  <div class="penalties-header-flex">
+    <div class="penalties-summary-card">
+      <div class="penalties-summary-icon">
+        <i data-lucide="dollar-sign"></i>
+      </div>
+      <div class="penalties-summary-info">
+        <h3>Total Penalties Collected</h3>
+        <p id="totalPenaltiesAmount">Loading...</p>
+      </div>
+    </div>
+
+    <div class="penalties-search-container">
+      <select id="penaltySearchType" class="penalties-search-select">
+        <option value="user_name">Search by User</option>
+        <option value="book_title">Search by Book</option>
+        <option value="status">Search by Status</option>
+      </select>
+      <div class="penalties-search-input-container">
+        <input type="text" id="penaltySearchInput" class="penalties-search-input" placeholder="Search penalties...">
+        <button class="penalties-search-button" id="penaltySearchButton">
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="penalties-table-container">
+    <table class="penalties-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student Name</th>
+          <th>Book Title</th>
+          <th>Payment Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="penaltiesTableBody">
+        <!-- Penalties data will be loaded here -->
+        <tr>
+          <td colspan="6" class="empty-table-message">
+            <div class="loading-state">
+              <i data-lucide="loader" class="loading-icon"></i>
+              <p>Loading penalties...</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

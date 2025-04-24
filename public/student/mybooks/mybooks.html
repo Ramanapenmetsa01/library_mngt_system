@@ -1,0 +1,40 @@
+<div class="my-books-container">
+    <div class="my-books-header">
+        <h1 style="color:white;">My Borrowed Books</h1>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" id="myBooksSearch" placeholder="Search by title or author..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div id="myBooksGrid" class="my-books-grid">
+        <!-- Books will be loaded here -->
+        <div class="loading-spinner">
+            <i data-lucide="loader" class="spinner-icon"></i>
+            <p>Loading your books...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Return Book Modal -->
+<div id="returnModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="returnModalTitle">Return Book</h2>
+            <button class="close-btn" onclick="closeReturnModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="returnModalBody">
+            <p>Are you sure you want to return this book?</p>
+            <div id="penaltyInfo" style="display: none;">
+                <p class="penalty-warning">This book is overdue!</p>
+                <p>You have a penalty of <span id="penaltyAmount">$0.00</span> for returning this book late.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-btn cancel-btn" onclick="closeReturnModal()">Cancel</button>
+            <button id="confirmReturn" class="btn btn-primary modal-btn confirm-btn" onclick="confirmReturnBook()">Return Book</button>
+        </div>
+    </div>
+</div>

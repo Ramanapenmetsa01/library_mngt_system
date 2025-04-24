@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Library Dashboard</title>
+    <link rel="stylesheet" href="/dashboard.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="/components/BooksDue/booksDue.css">
+    <script src="/components/BooksDue/booksDue.js"></script>
+    <link rel="stylesheet" href="/components/userDetails/userDetails.css">
+    <script src="/components/userDetails/userDetails.js"></script>
+    <link rel="stylesheet" href="/components/BooksAvailable/booksAvailable.css">
+    <script src="/components/BooksAvailable/booksAvailable.js"></script>
+    <link rel="stylesheet" href="/components/PenaltiesCollected/penaltiesCollected.css">
+    <script src="/components/PenaltiesCollected/penaltiesCollected.js"></script>
+    <link rel="stylesheet" href="/components/BooksHistory/booksHistory.css">
+    <script src="/components/BooksHistory/booksHistory.js"></script>
+</head>
+<body>
+    <header class="dashboard-header">
+      <div class="header-left">
+        <i data-lucide="book-open" class="header-icon"></i>
+        <span class="header-title">LibraryMS</span>
+      </div>
+      <div class="header-center" id="sectionControls">
+      <!-- Section specific controls will be inserted here -->
+      </div>
+      <div class="header-right">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </header>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <!-- Make sure the sidebar menu has the correct class -->
+      <aside class="sidebar">
+        <nav>
+          <ul class="sidebar-menu">
+            <li><a href="#" data-target="overview" class="active"><i data-lucide="home"></i> Overview</a></li>
+            <li><a href="#" data-target="userDetails"><i data-lucide="user"></i> User Details</a></li>
+            <li><a href="#" data-target="booksAvailable"><i data-lucide="book-open"></i> Books Available</a></li>
+            <li><a href="#" data-target="booksDue"><i data-lucide="clock"></i> Books Due</a></li>
+            <li><a href="#" data-target="penaltiesCollected"><i data-lucide="dollar-sign"></i> Penalties Collected</a></li>
+            <li><a href="#" data-target="booksHistory"><i data-lucide="book-open-check"></i> Books History</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="dashboard-main">
+        <!-- Hero (only on Overview) -->
+        <section id="heroSection" class="hero">
+          <div class="hero-content">
+            <h1>Welcome to Library Dashboard</h1>
+            <p>Manage your library resources efficiently and track all activities in one place</p>
+          </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overviewSection" class="overview-section">
+          <div class="overview-cards">
+            <div class="overview-card">
+              <h3>Total Users</h3>
+              <p id="totalUsersValue">…</p>
+            </div>
+            <div class="overview-card">
+              <h3>Books Available</h3>
+              <p id="totalBooksValue">…</p>
+            </div>
+            <div class="overview-card">
+              <h3>Issued Books</h3>
+              <p id="issuedBooksValue">…</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Placeholder for other sections -->
+        <section id="userDetailsSection" class="other-section" style="display:none;">
+            <!-- Remove the h2 as it's already in the component -->
+            <div id="userDetailsContent"></div>
+        </section>
+
+        <!-- Add Books Available section -->
+        <section id="booksAvailableSection" class="other-section" style="display:none;">
+            <div id="booksAvailableContent"></div>
+        </section>
+
+        <!-- Add Books Due section -->
+        <section id="booksDueSection" class="other-section" style="display:none;">
+            <div id="booksDueContent"></div>
+        </section>
+
+        <!-- Add this section after the booksDueSection -->
+        <section id="penaltiesCollectedSection" class="other-section" style="display:none;">
+          <div id="penaltiesCollectedContent"></div>
+        </section>
+
+
+        <!-- add similar <section> for booksDue, etc. -->
+        <!-- Add this div in the main content area where the other content containers are -->
+        <!-- Replace the existing booksHistorySection with this -->
+        <section id="booksHistorySection" class="other-section" style="display:none; position: relative; z-index: 1;">
+          <div id="booksHistoryContent" style="width: 100%;"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/dashboard.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+    });
+    </script>
+</body>
+</html>

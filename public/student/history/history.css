@@ -1,0 +1,339 @@
+/* Reset and base styles */
+.history-container * {
+    box-sizing: border-box;
+}
+
+.history-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    margin-top:-20px;
+}
+
+/* Main history header */
+.history-main-header {
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.history-main-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Tab navigation */
+.history-tabs {
+    display: flex;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.history-tab {
+    padding: 0.15rem 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.history-tab:hover {
+    color: #4f46e5;
+}
+
+.history-tab.active {
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.history-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #4f46e5;
+}
+
+/* Search and filters container */
+.history-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Search input */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.si{
+    color: #334155;
+    background-color: white;
+}
+.si::placeholder {
+    color: #94a3b8; /* Add this for better placeholder visibility */
+}
+.search-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+.search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+}
+
+/* Filters */
+.history-filters {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.history-filter {
+    padding: 0.6rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background-color: white;
+    color: #475569;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.history-filter:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+/* Table container */
+.history-table-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+/* Table styles */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.history-table td {
+    border-bottom: 1px solid #f1f5f9;
+    color: #475569;
+}
+
+.history-table tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.history-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-badge.returned,
+.status-badge.status-in-time {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.status-badge.overdue,
+.status-badge.status-overdue {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.status-badge.active,
+.status-badge.status-borrowed {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.status-badge.paid,
+.status-badge.status-paid {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.status-badge.unpaid,
+.status-badge.status-unpaid {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Action buttons */
+.action-btn {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.action-btn.view {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.action-btn.view:hover {
+    background-color: #bfdbfe;
+}
+
+.action-btn.pay {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+.action-btn.pay:hover {
+    background-color: #bbf7d0;
+}
+
+/* Tab content */
+.history-tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.history-tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Empty state and loading spinner */
+.empty-state,
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #64748b;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.empty-icon,
+.spinner-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    color: #94a3b8;
+}
+
+.spinner-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-message {
+    padding: 1rem;
+    text-align: center;
+    color: #b91c1c;
+    background-color: #fee2e2;
+    border-radius: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .history-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-container {
+        max-width: 100%;
+    }
+    
+    .history-table-container {
+        overflow-x: auto;
+    }
+    
+    .history-table th,
+    .history-table td {
+        padding: 0.75rem;
+    }
+    
+    .action-btn {
+        padding: 0.3rem 0.6rem;
+    }
+}
